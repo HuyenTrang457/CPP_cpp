@@ -1,7 +1,7 @@
  #include<vector>
  #include<iostream>
  using namespace std;
-
+//---------Nhap xuat vector-----------
  int main(){
      vector<int> v;
      v.push_back(100); // thêm ptu vao vector
@@ -16,7 +16,7 @@
 
      }
 
-  ----------nhap mang vector------------------
+ // ----------nhap mang vector------------------
    int n;
      cin>>n;
      for(int i=0;i<n;i++){
@@ -26,7 +26,7 @@
      }
      return 0;
  }
------duyet --Vector iterator---------------------
+//-----duyet --Vector iterator---------------------
  vector<int> v={1,2,3,4,5};
      vector<int>::iterator it= v.begin();
      for(it=v.begin();it!= v.end();it++){
