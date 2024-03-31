@@ -15,5 +15,21 @@
         cout<<x<<" ";
 
      }
+
+  ----------nhap mang vector------------------
+   int n;
+     cin>>n;
+     for(int i=0;i<n;i++){
+         int tmp;
+         cin>>tmp;
+         v.push_back(tmp);
+     }
      return 0;
  }
+-------Vector iterator---------------------
+ vector<int> v={1,2,3,4,5};
+     vector<int>::iterator it= v.begin();
+     for(it=v.begin();it!= v.end();it++){
+             cout<<*it <<" ";
+
+     }
