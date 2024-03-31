@@ -9,7 +9,7 @@ bool kiem_tra_ngto(int n){
         return true;
     }
 }
-//------Xoa phan tu tai vi tri bang k-------------------
+//------Xóa phần tử tại vị trí bằng k-------------------
 int x=0;
    for(int i=0;i<n;i++){
        if(a[i]==k){
@@ -28,7 +28,7 @@ int x=0;
        }
    }
 
-// -------mang cong don-------------------------------
+// -------Mảng cộng dồn-------------------------------
  
 #include <iostream>
 using namespace std;
@@ -50,3 +50,13 @@ int main()
     }
     return 0;
 }
+
+//----Cửa sổ cỡ K-------------------------------------
+int k=5;
+    for(int i=0;i<=n-k;i++){
+        int sum=0;
+        for(int j=i;j<i+5;j++){
+            sum+=a[j];
+        }
+        cout<<sum<<" ";
+    }
