@@ -27,3 +27,26 @@ int x=0;
            cout<<a[i]<<" ";
        }
    }
+
+// -------mang cong don-------------------------------
+ 
+#include <iostream>
+using namespace std;
+int main()
+{
+    int n; cout<<"Nhap n: "; cin>>n;
+    int a[n];
+    for(int i=0;i<n;i++){
+        cin>>a[i];
+    }
+    int f[n]={0};
+    f[0]=a[0];
+    for(int i=1;i<n;i++){
+            f[i]=f[i-1]+a[i];
+        
+    }
+    for(int i=0;i<n;i++){
+        cout<<f[i]<<" ";
+    }
+    return 0;
+}
