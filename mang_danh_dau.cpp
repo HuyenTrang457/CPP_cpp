@@ -81,3 +81,33 @@ int main(){
     cout<<endl<< min;
     return 0;
 }
+--------------------------
+    //đếm tần suất xuất hiện của các giá trị trong mảng
+#include<iostream>
+using namespace std;
+int main(){
+    int x[100],y[100];
+    int n,m;
+    cout<<"m= "; cin>>m;
+    cout<<"nhap mang A: ";
+    for(int i=0;i<m;i++){
+        cin>>x[i];
+    }
+    cout<<"n="; cin>>n;
+    cout<<endl<<"nhap mang B: ";
+    for(int i=0;i<n;i++){
+        cin>>y[i];
+    }
+    int p=3;
+    m=m+n;
+    for(int i=0;i<m;i++){
+        if(i==p){
+            for(int j=i;j<i+n;j++){
+                x[j]=y[j-p];
+            }
+            for(int k=)
+        }
+        
+    }
+    return 0;
+}
