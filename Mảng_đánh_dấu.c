@@ -80,3 +80,59 @@ int main()
     }
     return 0;
 }
+
+
+-------------------------CACH 2--------------------------------------------------------------
+ #include<iostream>
+#include<vector>
+#include<algorithm>
+using namespace std;
+// Hàm so sánh để sắp xếp các số lẻ giảm dần
+bool compare_odd(int a, int b){
+    return a>b;
+}
+
+// Hàm so sánh để sắp xếp số lẻ tăng dần
+bool compare_even(int a, int b){
+    return a<b;
+}
+
+void sort_odd_even(vector<int> &arr)
+{
+    //Phân chia mảng thành hai phần chẵn và lẻ
+    vector<int> odd, even;
+    for(int num:arr){
+        if(num%2==0){
+            even.push_back(num);
+        }else{
+            odd.push_back(num);
+        }
+    }
+    
+    // Sắp xếp các phần tử trong mỗi phần tương ứng
+    sort(odd.begin(), odd.end(), compare_odd);
+    sort(even.begin(), even.end(), compare_even);
+    
+    // Gộp hai phần đã sắp xếp lại với nhau
+    arr.clear();
+    arr.insert(arr.end(), odd.begin(), odd.end());
+    arr.insert(arr.end(), even.begin(), even.end());
+
+}
+int main()
+{
+    int n;
+    vector<int> arr;
+    cout<<"NHap so luong phan tu: ";
+    cin>> n;
+    for(int i=0;i<n;i++){
+        int tmp;
+        cin>>tmp;
+        arr.push_back(tmp);
+    }
+    sort_odd_even(arr);
+    for(int i=0;i<n;i++){
+        cout<<arr[i]<<" ";
+    }
+    return 0;
+}
