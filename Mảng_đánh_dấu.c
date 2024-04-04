@@ -32,12 +32,26 @@ void swap(int &a,int &b){
     a=b;
     b=tmp;
 }
-int find_max_le(int a[], int n, int k){
-    int max= INT_MIN;
+int find_max_le(int a[], int n, int k) // tìm vị trí có gtln từ k tới n
+{    int max= INT_MIN;
+    int index=k;
     for(int i=k;i<n;i++){
-        if(a[i]%2==1&&max<a[i]) max=a[i];
+        if(a[i]%2==1&&max<a[i]) 
+        {max=a[i]; index=i;}
     }
-    return max;
+    return index; // vị trí có gtln
+}
+int find_max_chan(int a[], int n,int k)
+{
+    int max=INT_MIN;
+    int index=k;
+    for(int i=k;i<n;i++){
+        if(a[i]%2==0&&max<a[i])
+        {
+            max=a[i]; index=i;
+        }
+    }
+    return index;
 }
 int main()
 {
@@ -45,9 +59,21 @@ int main()
     int a[n]={1,2, 3, 9, 7, 4, 8, 6, 10, 5};
     int j=0;
     for(int i=0;i<n;i++){
-        int x=find_max_le(a,n,j);
-        swap(x,a[j]);
+        int x=find_max_le(a,n,i);
+        swap(a[x],a[i]);
         j++;
+    }
+    int c=0; // đếm số lượng chữ số lẻ
+    for(int i=0;i<n;i++){
+        if(a[i]%2==1) c++;
+    }
+    for(int i=n-1;i>=5;i--)
+    {
+        
+        int x=find_max_chan(a,n,c);
+        swap(a[x],a[i]);
+        c++;
+        
     }
     for(int i=0;i<n;i++){
         cout<<a[i]<<" ";
