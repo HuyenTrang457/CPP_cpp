@@ -82,3 +82,37 @@ int main()
     
     return 0;
 }
+
+
+--------------------EX7 ------VECTOR----PAIR------------------
+    
+#include <iostream>
+#include<vector>
+#include<utility>
+#include<math.h>
+using namespace std;
+double distinct_point_to_0(pair<int, int> p){
+    return sqrt(pow(p.first,2)+pow(p.second,2));
+}
+int main()
+{
+    vector<pair<int,int>> point;
+    int n; cin>>n;
+    for(int i=0;i<n;i++){
+        int x,y;
+        cin>>x>>y;
+        point.push_back(make_pair(x,y));
+    }
+    vector<double> distincts;
+    for(int i=0;i<n;i++)
+    {
+        double dis=distinct_point_to_0(point[i]);
+        distincts.push_back(dis);
+    }
+    cout << fixed; // Để hiển thị số thập phân với độ chính xác cố định
+    cout.precision(2); // Đặt độ chính xác là 2 số sau dấu phẩy
+    for(double x:distincts){
+        cout<<x<<" ";
+    }
+    return 0;
+}
