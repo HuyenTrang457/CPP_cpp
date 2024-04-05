@@ -116,3 +116,30 @@ int main()
     }
     return 0;
 }
+
+//-------------PAIR---- ĐIỂM x, y, z------------------
+
+#include <iostream>
+#include<vector>
+#include<utility>
+#include<math.h>
+using namespace std;
+int sum_point(pair<pair<int,int>,int> p){
+    return p.first.first+p.first.second+p.second;  //TRUY CẬP
+}
+int main(){
+    int n; cin>>n;
+    vector<pair<pair<int, int>,int>> points;         //TẠO
+    for(int i=0;i<n;i++){
+        int x,y,z;
+        cin>>x>>y>>z;
+        points.push_back(make_pair(make_pair(x,y),z)); //TẠO
+    }
+    vector<int> sum;
+    for(int i=0;i<n;i++){
+        int s=sum_point(points[i]);
+        sum.push_back(s);
+    }
+    for(int x:sum) cout<<x<<" ";
+    return 0;
+}
