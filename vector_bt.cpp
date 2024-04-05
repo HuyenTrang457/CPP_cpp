@@ -197,7 +197,7 @@ int main(){
         char tmp;cin>>tmp;
         p.push_back(tmp);
     }
-    int a[100]={false}; //mang danh dau;
+    int a[1000]={false}; //mang danh dau; //lỗi bộ nhớ a
     for(int i=0;i<n;i++){
         if(!a[p[i]]){
             results.push_back(make_pair(p[i],1));
