@@ -42,3 +42,13 @@ vector<int> v={1,2,3,4,5};
          cout<<*it <<' ';
      }
  
+///------SORT ----------------------------
+//Tăng dần 
+    sort(vec.begin(),vec.end());
+// Giảm dần
+    sort(vec.begin(), vec.end(), greater<int>());
+
+//----------LẬT NGƯỢC VECTOR-----------------------
+    reverse(vec.begin(), vec.end());
+  // lật từ vị trí r đến l
+reverse(vec.begin()+l, vec.begin()+l );
