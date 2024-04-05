@@ -72,3 +72,13 @@ int main()
     
     return 0;
 }
+
+----------------------EX3--SORT------------------------------
+    
+//Tăng dần 
+    sort(vec.begin(),vec.end());
+// Giảm dần
+    sort(vec.begin(), vec.end(), greater<int>());
+    
+    return 0;
+}
