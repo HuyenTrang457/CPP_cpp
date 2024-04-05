@@ -52,3 +52,9 @@ vector<int> v={1,2,3,4,5};
     reverse(vec.begin(), vec.end());
   // lật từ vị trí r đến l
 reverse(vec.begin()+l, vec.begin()+l );
+
+
+//------------MIN--MAX---SUM--------------------------
+cout << *min_element(vec.begin(), vec.end());
+    cout << *max_element(vec.begin(), vec.end());
+    cout << accumulate(vec.begin(), vec.end(), 0);
