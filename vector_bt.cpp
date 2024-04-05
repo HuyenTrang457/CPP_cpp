@@ -143,3 +143,36 @@ int main(){
     for(int x:sum) cout<<x<<" ";
     return 0;
 }
+
+--------------TẦN SUẤT 1-----COUT<< số<< tần suất xuất hiện-------------------
+    
+#include <iostream>
+#include<vector>
+#include<utility>
+#include<math.h>
+using namespace std;
+
+int main(){
+    int n; cin>>n;
+    vector<pair<int, int>> results;
+    vector<int> p;
+    for(int i=0;i<n;i++){
+        int tmp;cin>>tmp;
+        p.push_back(tmp);
+    }
+    int a[100]={false};
+    for(int i=0;i<n;i++){
+        if(!a[p[i]]){
+            results.push_back(make_pair(p[i],1));
+            a[p[i]]= true;        
+            
+        }else{
+            for(int j=0;j<p[i];j++) // hoặc j chạy đến results.size(): vì lúc này size mới chỉ =i
+            {if(p[i]==results[j].first) results[j].second++;}
+        }
+    }
+    for(int i=0;i<results.size();i++){
+        cout<<results[i].first<<" "<<results[i].second<<endl;
+    }
+    return 0;
+}
