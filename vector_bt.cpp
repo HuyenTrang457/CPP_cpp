@@ -1,4 +1,4 @@
------------------EX1--------------------------------
+//-----------------EX1--------------------------------
 #include <iostream>
 #include<vector>
 using namespace std;
@@ -23,8 +23,8 @@ int main()
     if(vec.empty()){
         cout<<"EMPTY";
     }else{
-        for(int i=0;i<n;i++){
-            cout<<vec[i]<<endl;
+        for(int x : vec){
+            cout<<x<<endl;
         }
     }
     return 0;
