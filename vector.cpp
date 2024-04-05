@@ -58,3 +58,22 @@ reverse(vec.begin()+l, vec.begin()+l );
 cout << *min_element(vec.begin(), vec.end());
     cout << *max_element(vec.begin(), vec.end());
     cout << accumulate(vec.begin(), vec.end(), 0);
+
+//------------ PAIR IN VECTOR------------------------------
+ vector<pair<int,int>> point;
+    int n; cin>>n;
+    for(int i=0;i<n;i++){   //  NHập pair
+        int x,y;
+        cin>>x>>y;
+        point.push_back(make_pair(x,y));
+    }
+    vector<double> distincts;
+    for(int i=0;i<n;i++)
+    {
+        double dis=distinct_point_to_0(point[i]);
+        distincts.push_back(dis);
+    }
+    cout << fixed; // Để hiển thị số thập phân với độ chính xác cố định
+    cout.precision(2); // Đặt độ chính xác là 2 số sau dấu phẩy
+    for(double x:distincts){
+        cout<<x<<" ";
