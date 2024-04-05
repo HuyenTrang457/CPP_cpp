@@ -179,3 +179,41 @@ int main(){
     }
     return 0;
 }
+
+--------------TẦN SUẤT 1-----COUT<<     CHỮ SỐ << tần suất xuất hiện-------------------
+
+    
+#include <iostream>
+#include<vector>
+#include<utility>
+#include<math.h>
+using namespace std;
+
+int main(){
+    int n; cin>>n;
+    vector<pair<char, int>> results;
+    vector<char> p;
+    for(int i=0;i<n;i++){
+        char tmp;cin>>tmp;
+        p.push_back(tmp);
+    }
+    int a[100]={false}; //mang danh dau;
+    for(int i=0;i<n;i++){
+        if(!a[p[i]]){
+            results.push_back(make_pair(p[i],1));
+            a[p[i]]= true;        
+            
+        }else{
+            for(int j=0;j<results.size();j++) // hoặc j chạy đến results.size(): vì lúc này size mới chỉ =i
+            {if(p[i]==results[j].first){
+                results[j].second++;
+                break;}
+            }
+        }
+    }
+    for(int i=0;i<results.size();i++){
+        cout<<results[i].first<<" "<<results[i].second<<endl;
+    }
+    return 0;
+}
+
