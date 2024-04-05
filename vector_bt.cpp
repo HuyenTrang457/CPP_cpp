@@ -167,8 +167,11 @@ int main(){
             a[p[i]]= true;        
             
         }else{
-            for(int j=0;j<p[i];j++) // hoặc j chạy đến results.size(): vì lúc này size mới chỉ =i
-            {if(p[i]==results[j].first) results[j].second++;}
+            for(int j=0;results.size();j++)
+            {if(p[i]==results[j].first){
+                results[j].second++;
+                break; }
+            }
         }
     }
     for(int i=0;i<results.size();i++){
