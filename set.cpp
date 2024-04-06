@@ -79,3 +79,44 @@ for(int i=0;i<m;i++){
     }
 }
 }
+
+------------MIN MAX-----------THAO TÁC--------------------------------------
+    
+#include <iostream>
+using namespace std;
+#include<set>
+int main()
+{
+    int n; cin>>n;
+    int a[n];
+    multiset<int> se;
+    multiset<int>sortedMultiset;
+    set<int> m;
+    for(int i=0;i<n;i++){
+        cin>>a[i];
+        se.insert(a[i]);
+    }
+    int q; cin>>q; // so luong thao tac
+    for(int i=0;i<q;i++){
+        int op; cin>>op;
+        if(op==1){             //Thao tác 1 : Thêm phần tử X vào mảng
+            int x; cin>>x;
+            se.insert(x);
+        }else if(op==2){         //Thao tác 2 : Xóa mọi giá trị X khỏi mảng nếu X tồn tại trong mảng
+            int x; cin>>x;
+            auto it= se.find(x);
+            if(it!=se.end()) se.erase(x);
+            
+        }else if(op==3){            //Thao tác 3 : Tìm phần tử nhỏ nhất trong mảng
+                m.insert(se.begin(),se.end());
+                cout <<"min= "<< *m.begin() << endl;
+        } else{
+            m.insert(se.begin(),se.end());    //Thao tác 4 : Tìm phần tử lớn nhất trong mảng
+
+            auto it = m.end(); --it;
+            cout << "max= "<<*it << endl;
+        }
+    }
+    
+    return 0;
+}
