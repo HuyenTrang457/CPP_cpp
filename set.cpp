@@ -25,3 +25,27 @@ int main()
     
     return 0;
 }
+
+---------------PREV----------------------------------------------------
+    #include <bits/stdc++.h>
+using namespace std;
+int main(){
+    int a[7] = {5, 5, 1, 2, 3, 4, 5};
+    set<int> se(a, a + 7);
+    auto it = se.find(4); 
+    it =prev(it,2); // giống với it-=2 // Để di chuyển con trỏ it lùi lại 2 vị trí, 
+                                    //bạn cần sử dụng phép toán std::pre
+    cout << *it << endl;
+}
+    ----> OUTPUT: 2
+
+-------------------
+        #include <bits/stdc++.h>
+using namespace std;
+    int main(){
+        int a[7] = {5, 5, 1, 2, 3, 4, 5};
+        set<int> se(a, a + 7);
+        auto it = se.find(7);
+        --it;
+        cout << *it << endl;
+} OUTPUT: 5
