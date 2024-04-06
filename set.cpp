@@ -120,3 +120,56 @@ int main()
     
     return 0;
 }
+
+
+----------------Set vs Lower_bound, Upper_bound-----------------------
+    
+    #include<iostream>
+#include<set>
+using namespace std;
+int main(){
+    int n; cin>>n;
+    int a[n];
+    multiset<int> se;
+    for(int i=0;i<n;i++){
+        cin>>a[i];
+        se.insert(a[i]);
+    }
+    int t; cin>> t; // so thao tac;
+    set<int> m;
+    m.insert(se.begin(),se.end());
+    for(int i=0;i<t;i++){
+        int op; cin>>op;
+        if(op==1){
+            int x; cin>>x;
+            se.insert(x);
+        } else if(op==2){
+            int x; cin>>x;
+            auto it= se.find(x);
+            if(it!= se.end()) se.erase(it);
+        }else if(op==3){
+            int x; cin>>x;
+             int p=0;
+            for(int k:m){
+                if(k>=x){
+                    cout<<k<<endl;  p=1; break;}
+            }
+            if(p!=1) cout<<"-1";
+        }
+        else{
+            int x; cin>>x;
+             int p=0;
+            for(auto it=m.rend();it!=m.rbegin();it--){
+               
+                if(*it<=x){
+                    cout<<*it<<endl;  p=1;  break;
+                }
+            }
+            if(p!=1) cout<<"-1";
+
+        }
+    }
+    
+   for(int x:se) cout<< x<<" ";
+    return 0;
+}
