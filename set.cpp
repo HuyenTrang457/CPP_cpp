@@ -49,3 +49,33 @@ using namespace std;
         --it;
         cout << *it << endl;
 } OUTPUT: 5
+
+---------------TRUY VẤN TRÊN MẢNG----------------------------------
+        #include <bits/stdc++.h>
+using namespace std;
+int main(){
+int n; cin>>n;
+int a[n];
+multiset<int> se;
+for(int i=0;i<n;i++){
+    cin>>a[i];
+    se.insert(a[i]);
+}
+int m; cin>>m; // số thao tác
+for(int i=0;i<m;i++){
+    int op; cin>>op;
+    if(op==1){  //THÊM X VÀO MẢNG
+        int x; cin>>x;
+        se.insert(x);
+    } else if(op==2){  // XÓA X NẾU TỒN TẠI
+        int x;cin>>x;
+        auto it= se.find(x);
+        if(it!=se.end()) se.erase(x);
+    } else{             //KIỂM TRA X CÓ TỒN TẠI HAY KHÔNG
+        int x; cin>>x;
+        auto it= se.find(x);
+        if(it==se.end()) cout<<"No"<<endl;
+        else cout<<"yes"<<endl;
+    }
+}
+}
