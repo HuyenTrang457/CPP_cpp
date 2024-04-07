@@ -57,3 +57,42 @@ int main(){
     
     return 0;
 }
+
+-----------------MẢNG HIỆU DỒN--------------------------------
+    //tăng các phần tử từ chỉ số l đến r lên k đơn vị 
+       #include<bits/stdc++.h>
+using namespace std;
+typedef long long ll; // Định nghĩa kiểu dữ liệu long long
+ // mảng cộng dồn
+int a[1005][1005];
+int main(){
+    
+    int n,q; cin>>n>>q;
+    int a[n];
+    for(int i=0;i<n;i++){
+        cin>>a[i];
+    }
+    int d[n+2];
+    d[0]=a[0];
+    for(int i=1;i<=n;i++){
+        d[i]=a[i]-a[i-1];
+    }
+    
+    while(q--){
+        int l,r,k; //tăng các phần tử từ chỉ số l đến r lên k đơn vị 
+        cin>>l>>r>>k;
+        d[l]+=k;
+        d[r+1]-=k;
+        
+    }
+    ll f[n];
+    f[0]=d[0];
+    for(int i=1;i<n;i++){
+        f[i]=f[i-1]+d[i];
+    }
+    for(int i=0;i<n;i++){
+        cout<< f[i]<<" ";
+    }
+    
+    return 0;
+}
