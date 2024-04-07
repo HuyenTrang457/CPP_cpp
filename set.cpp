@@ -123,8 +123,10 @@ int main()
 
 
 ----------------Set vs Lower_bound, Upper_bound-----------------------
+
     
-    #include<iostream>
+    
+  #include<iostream>
 #include<set>
 using namespace std;
 int main(){
@@ -150,21 +152,22 @@ int main(){
         }else if(op==3){
             int x; cin>>x;
              int p=0;
-            for(int k:m){
-                if(k>=x){
-                    cout<<k<<endl;  p=1; break;}
+            for(auto it=m.begin();it!=m.end();it++){
+                if(*it>=x){
+                    cout<<*it<<endl;  p=1; break;}
             }
             if(p!=1) cout<<"-1";
         }
         else{
             int x; cin>>x;
              int p=0;
-            for(auto it=m.rend();it!=m.rbegin();it--){
-               
+            
+              for(auto it=m.rbegin();it!=m.rend();it++){  // LỖI: SỬA it-- thành it++
                 if(*it<=x){
                     cout<<*it<<endl;  p=1;  break;
+                    }
                 }
-            }
+            
             if(p!=1) cout<<"-1";
 
         }
