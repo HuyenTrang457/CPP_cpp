@@ -26,38 +26,33 @@ int main(){
 
 
 ---------- CỘNG DỒN MẢNG HAI CHIỀU----------------
-    #include<bits/stdc++.h>
+   #include<bits/stdc++.h>
 using namespace std;
 typedef long long ll; // Định nghĩa kiểu dữ liệu long long
+ll pre[1005][1005]; // mảng cộng dồn
+int a[1005][1005];
 int main(){
     
     int n, m; //n:hàng, m: cột
     cin>>n>>m;
-    int a[n][m];
-    for(int i=0;i<n;i++){
-        for(int j=0;j<m;j++){
+    
+    for(int i=1;i<=n;i++){
+        for(int j=1;j<=m;j++){
             cin>>a[i][j];
         }
     }
-    ll pre[n][m]; // mảng cộng dồn
-    for(int i=0;i<n;i++){
-        pre[i][0]=a[i][0];
-    }
-    for(int i=0;i<n;i++){
-        for(int j=1;j<m;j++){
-            pre[i][j]= pre[i][j-1]+a[i][j];
+    
+    // xây dựng mảng cộng dồn prefix
+    for(int i=1;i<=n;i++){
+        for(int j=1;j<=m;j++){
+            pre[i][j]= pre[i-1][j]+pre[i][j-1]-pre[i-1][j-1]+a[i][j];
         }
     }
     int q; cin>>q; // số lượng truy vấn
     for(int i=0;i<q;i++){ // chạy từng truy vấn
         int x1,x2,y1,y2; // x: rown,  y: columb
         cin>>x1>>x2>>y1>>y2;
-        ll sum;
-        for(int i=x1;i<=x2;i++){
-            if(y1==0) sum+= pre[y2];
-            else sum+=(pre[y2]-pre[y1-1]);
-        }
-        cout<<sum<< endl;
+        cout<< pre[x2][y2]-pre[x2][y1-1]-pre[x1-1][y2]+a[x2-x1][y2-y1]<<endl;
     }
     
     return 0;
