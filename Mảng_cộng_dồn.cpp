@@ -121,7 +121,7 @@ int main()
     sort(a,a+n,greater<int>());
     ll res;
     for(int i=0;i<n;i++){
-        res+= a[i]*f[i]; 
+        res+= 1ll* a[i]*f[i];  // vì res có thể bị tràn nên nhân thêm 1ll
     }
     cout<<res<<endl;
     return 0;
