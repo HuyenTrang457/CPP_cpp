@@ -90,6 +90,43 @@ int main(){
     for(int i=1;i<n;i++){
         f[i]=f[i-1]+d[i];
     }
+
+
+    --------------------Mảng Cộng Dồn - Mảng Hiệu]. Bài 6. Tổng lớn nhất----------
+    
+#include <iostream>
+#include<algorithm>
+using namespace std;
+using ll= long long;
+int main()
+{
+    int n,q; cin>>n>>q;
+    int a[n];
+    for(int i=0;i<n;i++){
+        cin>>a[i];
+    }
+    int d[n+5]={0};
+    while(q--){
+        int l, r; cin>>l>>r;
+        --l; --r;
+        d[l]+=1;
+        d[r+1]-=1;
+    }
+    int f[n];
+    f[0]=d[0];
+    for(int i=1;i<=n;i++){
+        f[i]=f[i-1]+d[i];
+    }
+    sort(f,f+n,greater<int>()); // sắp xếp giảm dần
+    sort(a,a+n,greater<int>());
+    ll res;
+    for(int i=0;i<n;i++){
+        res+= a[i]*f[i]; 
+    }
+    cout<<res<<endl;
+    return 0;
+}
+
     for(int i=0;i<n;i++){
         cout<< f[i]<<" ";
     }
