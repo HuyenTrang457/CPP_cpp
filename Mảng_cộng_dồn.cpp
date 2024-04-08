@@ -108,7 +108,7 @@ int main()
     int d[n+5]={0};
     while(q--){
         int l, r; cin>>l>>r;
-        --l; --r;
+        --l; --r; // do đề yêu cầu l, r từ 1 --> n mà mảng a từ 0--> n-1 nên phải giảm 
         d[l]+=1;
         d[r+1]-=1;
     }
