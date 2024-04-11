@@ -150,7 +150,7 @@ using namespace std;
 using ll= long long;
 int a[200000];
 int f[200000];
-// f[i] số lượng cốc trà sữa >=k nằm trong đoạn từ l -->r
+// f[i] số lượng cốc trà sữa >=k nằm trong đoạn từ 1 -->i
 int main()
 {
     int n,k,q; cin>>n>>k>>q;
