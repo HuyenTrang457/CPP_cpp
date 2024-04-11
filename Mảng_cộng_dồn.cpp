@@ -133,3 +133,45 @@ int main()
     
     return 0;
 }
+
+
+------------------------------------------------------------------------
+    /*Tèo mới lên đại học và kiếm được một công việc tại hàng trà sữa, 
+    có không quá 200000 cốc trà sữa xếp thành 1 hàng ngang, ban đầu mỗi cốc trà sữa 
+có độ ngọt bằng 0. Tèo tiến hành liên tiếp N các thao tác, mỗi thao tác 
+anh ta sẽ thêm 1 gam đường vào các cốc trà sữa từ vị trí L tới vị trí R.
+    Sau cùng những cốc trà sữa có lượng đường >= K gam được chuyển đi để phục vụ khách hàng. 
+Có nhiều câu hỏi, mỗi câu hỏi yêu cầu bạn trả lời trong các cốc trà từ thứ L tới thứ R 
+có bao nhiêu cốc đạt chuẩn để bán cho khách hàng ?
+    */
+#include <iostream>
+#include<algorithm>
+using namespace std;
+using ll= long long;
+int a[200000];
+int f[200000];
+// f[i] số lượng cốc trà sữa >=k nằm trong đoạn từ l -->r
+int main()
+{
+    int n,k,q; cin>>n>>k>>q;
+    for(int i=1;i<=n;i++){
+        int l,r; cin>>l>>r;
+        a[l]+=1;      
+        a[r+1]-=1;
+    }
+    for(int i=1;i<=200000;i++){
+        a[i]+= a[i-1];
+    }
+    int dem=0;
+    for(int i=1;i<=200000;i++){
+        if(a[i]>=k) ++dem;
+        f[i]=dem;
+    }
+    while(q--){
+        int l,r; cin>>l>>r;
+        cout<<f[r]-f[l-1]<< endl;
+    }
+    
+    return 0;
+    
+}
