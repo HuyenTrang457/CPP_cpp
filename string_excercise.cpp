@@ -15,6 +15,7 @@ void upper(string &s);
 void lower(string &s);
 int sum_digit(string s);// tổng các chữ số trong string
 bool nice_number(int n); // số đẹp là số có các chữ số cạnh nhau có hiệu <= 1
+string insert_comma(long long int &n) // chèn dâu phẩy vào số tự nhiên
 
 int main()
 {
@@ -72,4 +73,19 @@ bool nice_number(int n)
         if(re>1) return false; 
     }
     return true;
+}
+
+string insert_comma(long long int &n)
+{
+  
+  string s=to_string(n);
+    int c=0;
+    for(int i=s.size()-1;i>=0;i--){
+        c++;
+        if((c==3)){
+            s.insert(i,",");
+            c=0;  
+        }
+    }
+    return s;
 }
