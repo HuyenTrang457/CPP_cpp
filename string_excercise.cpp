@@ -37,6 +37,18 @@ int main()
     
     return 0;
 }
+----------------------------------------------
+// xóa các phần tử trong 1 chuỗi từ một chuỗi cho trước
+ string k="28tech";
+    
+    for(int i=0;i<k.size();i++){
+        if(s.find(k[i])!= string::npos){
+            int x=s.find(k[i]);
+            s.erase(x,1);
+        }
+    }
+
+--------------------------------------------------
 void reserve_string(string &s)
 {
     int n= s.size();
