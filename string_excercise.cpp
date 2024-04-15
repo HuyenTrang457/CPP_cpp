@@ -13,6 +13,7 @@ void reserve_string(string &s);
 void swap(string &a, string &b);
 void upper(string &s);
 void lower(string &s);
+int sum_digit(string s);// tổng các chữ số trong string
 int main()
 {
     string s;
@@ -51,4 +52,12 @@ void lower(string &s)
     for(int i=0;i<s.size();i++){
         s[i]=tolower(s[i]);
     }
+}
+int sum_digit(string s)
+{
+    int sum=0;
+    for(int i=0;i<s.size();i++){
+        if(isdigit(s[i])) sum+= s[i] -'0';
+    }
+    return sum;
 }
