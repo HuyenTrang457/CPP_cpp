@@ -1,13 +1,6 @@
-/******************************************************************************
-
-                              Online C++ Compiler.
-               Code, Compile, Run and Debug C++ program online.
-Write your code in this editor and press "Run" button to compile and execute it.
-
-*******************************************************************************/
-
 #include <iostream>
 #include<ctype.h>
+#include<algorithm>
 using namespace std;
 void reserve_string(string &s);
 void swap(string &a, string &b);
@@ -15,7 +8,8 @@ void upper(string &s);
 void lower(string &s);
 int sum_digit(string s);// tổng các chữ số trong string
 bool nice_number(int n); // số đẹp là số có các chữ số cạnh nhau có hiệu <= 1
-string insert_comma(long long int &n) // chèn dâu phẩy vào số tự nhiên
+string insert_comma(long long int &n); // chèn dâu phẩy vào số tự nhiên
+string sort_digit(long long int n);
 
 int main()
 {
@@ -38,11 +32,10 @@ int main()
     */
     long long int n;
     cout<<"nhap n: "; cin>>n;
-    string m= insert_comma(n);
+    string m= sort_digit(n);
     cout<<m;
     
     return 0;
-}
 }
 void reserve_string(string &s)
 {
