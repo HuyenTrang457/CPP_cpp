@@ -22,14 +22,27 @@ int main()
     string s;
     cin>> s;
     cout<<s<<endl;
-    reserve_string(s);
+    /*reserve_string(s);
     cout<<s<<endl;
     upper(s);
     cout<<s<<endl;
     lower(s);
-        cout<<s<<endl;
-
+    cout<<s<<endl;
+    
+    int x= sum_alpha(s);
+    cout<<x<<endl;
+    int n;
+    cout<<" Nhap n: "; cin>>n;
+    if(nice_number(n)) cout<<"yes";
+    else cout<<"no";
+    */
+    long long int n;
+    cout<<"nhap n: "; cin>>n;
+    string m= insert_comma(n);
+    cout<<m;
+    
     return 0;
+}
 }
 void reserve_string(string &s)
 {
@@ -86,6 +99,18 @@ string insert_comma(long long int &n)
             s.insert(i,",");
             c=0;  
         }
+    }
+    return s;
+}
+string sort_digit(long long int n)
+{
+    string s= to_string(n);
+    sort(s.begin(), s.end());
+    for(int i=0;i<s.size();i++){
+        if(s[i]=='0'){
+            s.erase(i,1);
+            i--;
+        }else break;
     }
     return s;
 }
