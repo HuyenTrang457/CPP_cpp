@@ -14,6 +14,8 @@ void swap(string &a, string &b);
 void upper(string &s);
 void lower(string &s);
 int sum_digit(string s);// tổng các chữ số trong string
+bool nice_number(int n); // số đẹp là số có các chữ số cạnh nhau có hiệu <= 1
+
 int main()
 {
     string s;
@@ -60,4 +62,14 @@ int sum_digit(string s)
         if(isdigit(s[i])) sum+= s[i] -'0';
     }
     return sum;
+}
+bool nice_number(int n)
+{
+    string s;
+    s= to_string(n);
+    for(int i=0;i<s.size()-1;i++){
+        int re= abs(s[i]-'0'-(s[i+1]-'0'));
+        if(re>1) return false; 
+    }
+    return true;
 }
