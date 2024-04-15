@@ -49,6 +49,24 @@ int main()
     }
 
 --------------------------------------------------
+// chỉnh sửa ngày tháng
+string s;
+    cin>> s;
+    cout<<s<<endl;
+    int c=0;
+    int x=s.size();
+    for(int i=0;i<x;i++){
+        if(s[i]=='/'){
+            if(c==1){
+                s.insert(i-1,"0");
+            }
+            c=0;
+            continue;
+        }
+        c++;
+    }
+    cout<<"ket qua: "<< s;
+---------------------------------------------------------
 void reserve_string(string &s)
 {
     int n= s.size();
