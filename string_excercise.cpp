@@ -1,3 +1,35 @@
+----------------------------------------------------------------------------------------------
+// SẮP XẾP THEO ĐỘ BÀI --> CHỮ CÁI ĐẦU    
+
+#include<iostream>
+ #include<ctype.h>
+ #include<algorithm>
+ #include<vector>
+#include <bits/stdc++.h> // thư viện của stringstream
+ using namespace std;
+ bool compare(string &a, string &b){
+     if(a.length()!= b.length()) return a.length ()< b.length();
+     
+     else return a<b;
+ }
+ int main(){
+     string s="nguyen thi huyn trang";
+     vector<string> words;
+     string word;
+     stringstream ss(s);
+     while(ss>>word){
+         words.push_back(word);
+     }
+     sort(words.begin(),words.end(),compare);
+     for(string x:words){
+         cout<< x<<" ";
+     }
+     return 0;
+ }
+
+
+
+---------------------------------------------------------------------------------------------
 #include <iostream>
 #include<ctype.h>
 #include<algorithm>
