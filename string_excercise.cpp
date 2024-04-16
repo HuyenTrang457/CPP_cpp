@@ -1,4 +1,27 @@
 ----------------------------------------------------------------------------------------------
+//KIỂM TRA CHUỖI THUẬN NGHỊCH 
+
+int kiem_tra_thuan_nghich(string word){
+    int n=word.size();
+    for(int i=0;i<n/2;i++){
+        if(word[i]!=word[n-i-1]) return 0;
+    }
+    return 1;
+}
+ int main(){
+     string s="IAzbbzAI   ocoS iIA ccAAAAAAcc izzbb   aoI iIiAWWAiIi ";
+     stringstream ss(s);
+     string word;
+     string words="";
+     while(ss>> word)
+     {
+         if(kiem_tra_thuan_nghich(word)){
+             words+= word;
+             words+=" ";
+         }
+     }
+     cout<<words;
+----------------------------------------------------------------------------------------------
 // SẮP XẾP THEO ĐỘ BÀI --> CHỮ CÁI ĐẦU    
 
 #include<iostream>
