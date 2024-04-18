@@ -1,3 +1,40 @@
+//---------------- Tính tổ hợp chập k của n phần tử------------------------
+
+#include <iostream>
+using namespace std;
+using ll =  long long;
+ll c[1005][1005];
+int mod= 1e9 + 7; //sử dụng mod giúp giảm thiểu rủi ro tràn số 
+void khoitao(){
+    for(int i=0;i<=1000;i++){
+        for(int j=0;j<= i;j++){
+            // Tính C[i][j] : tổ hợp chập j của i
+            if(j==0||i==j){
+                c[i][j]=1;
+            }
+            else{
+                c[i][j]= c[i-1][j-1]+c[i-1][j];
+                c[i][j] %=mod;
+            }
+        }
+    }
+}
+int main()
+{
+   khoitao();
+   for(int i=0;i<=100;i++){
+       for(int j=0;j<=i;j++){
+           cout<<c[i][j]<<" ";
+       }
+       cout<<endl;
+   }
+
+    return 0;
+}
+
+
+
+
 //-----Kiem tra so nguyen to------------------
 bool kiem_tra_ngto(int n){
     if(n==2) return true;
