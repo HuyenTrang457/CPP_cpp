@@ -79,7 +79,7 @@ int main()
     }
     int ibegin= stoi(strbegin);
     string strend="";
-    for(int i=0;i<n;i++){
+    for(int i=0;i<n;i++){ // số lớn nhất có n chữ số
         strend+="9";
     }
     int iend= stoi(strend);
