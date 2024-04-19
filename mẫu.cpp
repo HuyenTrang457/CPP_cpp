@@ -16,3 +16,15 @@ int main()
     fout.close();
     return 0;
 }
+
+
+---- đọc file chưa biết trước số lượng
+void read_file(FILE* filename, Array &arr)
+{
+    int i=0;
+    while (fscanf(filename, "%d", &arr.data[i]) != EOF) {
+        i++;
+          }
+        arr.n=i;
+    
+}
