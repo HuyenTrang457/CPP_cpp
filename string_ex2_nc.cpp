@@ -1,5 +1,16 @@
 //26,27
 
+----------------------------------------------------------------------------------
+ // số lượng chuỗi có đầu cuối bằng nhau 
+ // tổ hợp chập 2 của n (n: số lần xuất hiện của một kí tự)
+ map<char,int> mp;
+    for(char x:s) mp[x]++;
+    ll ans=0;
+    for(auto it:mp){
+        ans+= 1ll* it.second*(it.second-1)/2;
+    }
+
+
 //Bài 18. Tạo email và mật khẩu-------------------------------------------------------------
  #include<ctype.h>
  #include<algorithm>
