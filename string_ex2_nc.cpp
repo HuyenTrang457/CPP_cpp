@@ -105,3 +105,57 @@ int main()
     fout.close();
     return 0;
 }
+
+
+--------------------------------------------------
+ /*
+ Cho một xâu kí tự S chỉ bao gồm các chữ cái in thường, hãy tìm xâu con liên tiếp 
+ chứa các kí tự giống nhau dài nhất, nếu có nhiều xâu con thỏa mãn thì chọn xâu con có thứ tự từ điển lớn nhất.
+ */
+ #include<iostream>
+#include <bits/stdc++.h>
+using namespace std;
+bool compare(string &a, string &b){
+    if(a.length()!=b.length()) return a.length()<b.length();
+    else return a<b;
+}
+int sum(int n) // hàm tính tổng chữ số của n
+{
+    string x= to_string(n);
+    int sum=0;
+    for(int i=0;i<x.size();i++){
+        sum=sum+ x[i]-'0';
+    }
+    return sum;
+}
+int main()
+{
+    ifstream fin("input.txt");
+    ofstream fout("output.txt");
+    string s1;
+    string s2;
+    int p;
+    int n;
+    getline(fin, s1);
+    
+    set<string> se;
+   for(int i=0;i<s1.size();i++){
+    string current_str = s1.substr(i,1);  // Extract single character
+       string w=current_str;     // string để lưu 1 từ có các chữ giống nhau : aa, zz
+       for(int j=i+1;j<s1.size();j++){
+           if(s1[j]==current_str[0]){
+               w+= s1[j];
+           }
+           else if(s1[j]!=current_str[0]&&w.size()>1){
+               se.insert(w);  // lưu từ tìm được vào set 
+               break;
+           }
+       }
+   }
+    for(string x:se) cout<<x<<" ";
+    //aabb
+    
+    fin.close();
+    fout.close();
+    return 0;
+}
