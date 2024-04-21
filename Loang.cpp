@@ -4,7 +4,10 @@ using namespace std;
 using ll= long long;
 int n, m;
 int a[100][100];
-
+/* TRường hợp tính cả  chung đỉnh
+    int dx[8]={-1,0,1,1,1,0,-1,-1};
+    int dy[8]={-1,-1,-1,0,1,1,1,0};
+*/
 int dx[4]={-1,0,0,1};
 int dy[4]={0,-1,1,0};
 void loang(int i, int j){
