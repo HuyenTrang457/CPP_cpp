@@ -4,14 +4,7 @@ using namespace std;
 using ll= long long;
 int n, m;
 int a[100][100];
-void nhap(){
-    cin>>n>>m;
-    for(int i=0;i<n;i++){
-        for(int j=0;j<m;j++){
-            cin>>a[i][j];
-        }
-    }
-}
+
 int dx[4]={-1,0,0,1};
 int dy[4]={0,-1,1,0};
 void loang(int i, int j){
@@ -27,6 +20,12 @@ int main()
 {
     ifstream fin("input.txt");
     ofstream fout("output.txt");
+    fin>>n>>m;
+    for(int i=0;i<n;i++){
+        for(int j=0;j<m;j++){
+            fin>> a[i][j];
+        }
+    }
     int dem=0;
     for(int i=0;i<n;i++){
         for(int j=0;j<m;j++){
@@ -36,6 +35,7 @@ int main()
             }
         }
     }
+    cout<<dem;
     fin.close();
     fout.close();
     return 0;
