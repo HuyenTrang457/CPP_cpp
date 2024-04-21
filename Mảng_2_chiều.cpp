@@ -52,3 +52,59 @@ int main()
     fin.close();
     return 0;
 }
+
+
+---------------------------------------------------------------
+    //NHÂN HAI MA TRẬN
+    #include <bits/stdc++.h>
+#include<algorithm>
+using namespace std;
+using ll= long long;
+int n, m,u,v;
+int a[100][100];
+int b[100][100];
+int res[100][100]; // mang ket qua
+
+int tich_vo_huong(int a[], int b[], int n) // nhân hai mảng một chiều
+{
+    int sum=0;
+    for(int i=0;i<n;i++){
+        sum+= a[i]*b[i];
+    }
+    return sum;
+}
+int main()
+{
+    // hàng của a bằng cột của b --> m=u
+    ifstream fin("input.txt");
+    fin>>n>>m;
+    for(int i=0;i<n;i++){
+        for(int j=0;j<m;j++){
+            fin>> a[i][j];
+        }
+    }
+    fin>>u>>v;
+    for(int i=0;i<u;i++){
+        for(int j=0;j<v;j++){
+            fin>> b[i][j];
+        }
+    }
+    for(int i=0;i<n;i++){
+        for(int j=0;j<v;j++){
+            int cur_col[u]={0};
+            for(int k=0;k<u;k++){
+                cur_col[k]=b[k][j];
+            }
+            res[i][j]= tich_vo_huong(a[i],cur_col,u);
+        }
+    }
+    // matrix kết quả: có hàng = hàng a, cột= cột b
+    for(int i=0;i<n;i++){
+        for(int j=0;j<v;j++){
+            cout<< res[i][j]<<" ";
+        } cout<<endl;
+    }
+    
+    fin.close();
+    return 0;
+}
