@@ -108,3 +108,51 @@ int main()
     fin.close();
     return 0;
 }
+
+
+-----BAI 20-------------------------------------------------------------------------------
+// ĐẾM CỰC ĐẠI ĐỊA PHƯƠNG
+     #include<bits/stdc++.h>
+ using namespace std;
+ 
+ int dx[4]={-1,-1,1,1};
+ int dy[4]={-1,1,-1,1};
+ bool is_local_max_value(int a[100][100], int n, int m, int i,int j){
+     int val = a[i][j];
+     for(int k=0;k<4;k++){
+         int i1= i+dx[k], j1= j+dy[k];
+         if(i1>=0 && i1<n && j1>=0&&j1<m&& a[i1][j1]>=val) 
+         return false;  // Nếu có điểm lớn hơn hoặc bằng thì không phải cực đại
+     }
+     return true; // Nếu không có điểm lớn hơn hoặc bằng thì là cực đại
+ }
+ 
+ // Hàm kiểm tra và đếm số cực đại 
+ int  count_local_max_value(int a[100][100], int n, int m){
+     int count=0;
+     for(int i=0;i<n;i++){
+         for(int j=0;j<m;j++){
+             if(is_local_max_value(a, n, m,i,j)){
+                 count++;
+
+             }
+         }
+     }
+     return count;
+ }
+ 
+ int main(){
+      ifstream fin("input.txt");
+    ofstream fout("output.txt");
+    int n, m;
+    int a[100][100];
+    fin>>n>>m;
+    for(int i=0;i<n;i++){
+        for(int j=0;j<m;j++){
+            fin>> a[i][j];
+        }
+    }
+    int count=0;
+    count= count_local_max_value(a,n,m);
+    cout<<count;
+ }
