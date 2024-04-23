@@ -47,3 +47,58 @@ int main()
     fout.close();
     return 0;
 }
+
+
+---------------------------------------------------------------------
+/*    [Mảng 2 Chiều]. Bài 25. Diện tích lơn nhất
+Cho một ma trận nhị phân cỡ NxM chỉ bao gồm các số 0, 1. Hãy xác định vùng nhiều số
+1 nhất trên ma trận, biết rằng các ô có chung cạnh được coi là cùng miền.
+
+*/
+#include <bits/stdc++.h>
+using namespace std;
+using ll= long long;
+int n, m;
+int a[100][100];
+
+int dx[4]={-1,0,0,1};
+int dy[4]={0,-1,1,0};
+
+void loang(int i, int j, int &dem){
+
+    dem++; // tăng đếm mỗi lần loang sang ô mới
+    a[i][j] = 0;
+    for(int k = 0; k < 4; k++){
+        int i1 = i + dx[k], j1 = j + dy[k];
+        if(i1 >= 0 && i1 < n && j1 >= 0 && j1 < m && a[i1][j1]){
+            loang(i1, j1, dem); // Truyền biến dem xuống các lần gọi đệ quy
+        }
+    }
+}
+int main()
+{
+    ifstream fin("input.txt");
+    ofstream fout("output.txt");
+    fin>>n>>m;
+    for(int i=0;i<n;i++){
+        for(int j=0;j<m;j++){
+            fin>> a[i][j];
+        }
+    }
+    int sum[100]={0};
+    int   max=0;
+    int dem=0;
+    for(int i=0;i<n;i++){
+        for(int j=0;j<m;j++){
+            dem=0; // khởi tạo đếm= 0 
+            if(a[i][j]==1){
+                loang(i,j, dem);
+            }
+            if(dem>max) max=dem;
+        }
+    }
+    cout<<max;
+    fin.close();
+    fout.close();
+    return 0;
+}
