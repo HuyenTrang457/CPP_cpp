@@ -156,3 +156,43 @@ int main()
     count= count_local_max_value(a,n,m);
     cout<<count;
  }
+
+-------------------------------
+// Cho ma trận vuông A[N][N]. Hãy in ra các số xuất hiện ở mọi hàng theo 
+    //thứ tự từ bé đến lớn, mỗi giá trị xuất hiện chỉ liệt kê 1 lần.
+#include<bits/stdc++.h>
+int n, m;
+using namespace std;
+int x[100][100]={1};
+int main()
+{
+    ifstream fin("input.txt");
+    ofstream fout("output.txt");
+    fin>>n>>m;
+    int a[n][m];
+    for(int i=0;i<n;i++){
+        for(int j=0;j<m;j++){
+            fin>> a[i][j];
+        }
+    } 
+ vector<int> vec; // vector lưu mảng một chiều ( hàng đầu tiên)
+    for(int i=0;i<n;i++){
+        vector<int> v; // vector lưu lần lượt các hàng tiếp theo
+        if(i==0){
+            for(int j=0;j<m;j++){
+            vec.push_back(a[0][j]);
+                }
+        }else{
+        for(int j=0;j<m;j++){
+            v.push_back(a[i][j]);
+        }
+        for(int k=0;k<vec.size();k++){
+            auto it= find(v.begin(),v.end(),vec[k]);
+            if(it== v.end()) {
+                vec.erase(vec.begin()+k); // xóa giá trị tại vị trí k
+            }
+        }
+        }
+    }
+    set<int> s(vec.begin(),vec.end());
+    for(int x:s) cout<<x<<" ";
