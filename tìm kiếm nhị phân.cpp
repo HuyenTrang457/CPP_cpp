@@ -1,5 +1,5 @@
 // lower_bound : tìm kiếm  phần tử nhỏ nhất lớn hơn hoặc bằng giá trị x trong mảng, vector (đã sắp xếp)
-
+---> kết quả trả ra iterater
 #include <bits/stdc++.h>
 using namespace std;
 int main(){
