@@ -143,3 +143,62 @@ int main() {
     return 0;
 }
 
+--------------------------------------------------------
+    [Sắp xếp - Tìm Kiếm]. Bài 17. Cặp số có tổng bằng K
+#include <bits/stdc++.h>
+using namespace std;
+int vi_tri_dau_tien_bang_x(int a[], int n, int k){
+    int l=0, r=n-1, x=-1;
+    while(l<=r){
+        int tmp=(r+l)/2;
+        if (a[tmp] == k) {
+            x = tmp; 
+            r= tmp-1;
+        }
+        else if(a[tmp]<k){
+            l= tmp+1;
+        }
+        else if(a[tmp]>k){
+            r=tmp-1;
+        }
+    }
+    return x;
+}
+int vi_tri_cuoi_cung_bang_k(int a[], int n, int k){
+    int l= 0, r= n-1,x=-1;
+    int tmp;
+    for(int i=0;i<n;i++){
+    
+        while(l<=r){
+             tmp= (r+l)/2;
+            if(a[tmp]==k){
+                l=tmp+1;
+                x=tmp;
+            }
+            else if(a[tmp]<k){
+                l= tmp+1;
+            }
+            else if(a[tmp]>k){
+                r=tmp-1;
+            }
+        }
+    }
+    return x;
+}
+int main() {
+   int a[4]={3,2,2,3};
+   int n=  4, k=4;
+   int x, res=0;
+   for(int i=0;i<n;i++){
+      x= k-a[i];
+      auto it1= lower_bound(a+i+1,a+n,x);//vi_tri_dau_tien_bang_x(a,n,x);
+      auto it2= upper_bound(a+i+1,a+n,x);   //vi_tri_cuoi_cung_bang_k(a,n,x);
+      
+      res+= it2-it1;  // note
+      cout<<res<<" ";
+   }
+   cout<<res;
+    return 0;
+}
+
+
