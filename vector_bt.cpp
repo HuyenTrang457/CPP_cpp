@@ -243,3 +243,43 @@ int main(){
     return 0;
 }
 
+----------------------------------------------------
+    TẦN SUẤT -- MẢNG SỐ
+
+#include<iostream>
+#include<vector>
+using namespace std;
+int main() {
+	int n = 8;
+	int a[8] = {1,4,2,5,4,1,1,5};
+	int b[1000] = { false };
+	vector<pair<int, int>> re;
+	vector<int> p;
+	for (int i = 0; i < n; i++) {
+
+		p.push_back(a[i]);
+	}
+	for (int i = 0; i < n; i++)
+	{
+		if (!b[p[i]]) {
+			re.push_back(make_pair(p[i], 1));
+			b[p[i]] = true;
+
+		}
+		else {
+			for (int j = 0; j < re.size(); j++) {
+				if (p[i] == re[j].first) {
+					re[j].second++;
+					break;
+				}
+			}
+		}
+		
+	}
+	for (int i = 0; i < re.size(); i++) {
+		cout << re[i].first << " " << re[i].second << endl;
+	}
+	
+
+	
+}
