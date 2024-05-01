@@ -37,3 +37,45 @@ int main() {
 	}
 	cout << ans;
 }
+
+-------------------------------------------------------------------------------------
+CHẶT CÂY XÂY NHÀ
+
+#include<iostream>
+#include<algorithm>
+#include<vector>
+using namespace std;
+using ll = long long;
+
+bool check(vector<int> a, int n, int l, int h) {
+	int sum = 0;
+	for (int i = 0; i < n; i++) {
+		if (a[i]> h) {
+			sum += (a[i] - h);
+		}
+		if (l <= sum) return true;
+	}
+	return l <= sum;
+}
+int main() {
+
+	int n, l; cin >> n >> l;
+	int ans=0;
+	vector<int> a;
+	for (int i = 0; i < n; i++) {
+		int tmp; cin >> tmp;
+		a.push_back(tmp);
+	}
+	int left = 0, right = 1ll * (*max_element(a.begin(), a.end()));
+	while (left <= right) {
+		int mid = (left + right) / 2;
+		if (check(a, n, l, mid)) {
+			ans = mid;
+			left = mid + 1;
+		}
+		else {
+			right = mid - 1;
+		}
+	}
+	cout << ans;
+}
