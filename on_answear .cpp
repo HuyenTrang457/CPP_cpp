@@ -79,3 +79,59 @@ int main() {
 	}
 	cout << ans;
 }
+
+
+
+
+--------------------------------------------------------------------------------------------
+[Sắp xếp - Tìm Kiếm]. Bài 46. Chia mảng thành k mảng con liên tiếp có tổng lớn nhỏ nhất
+
+
+#include<iostream>
+#include<algorithm>
+#include<vector>
+//5 3
+//2 4 7 3 5
+// ---> output: 8
+using namespace std;
+using ll = long long;
+
+bool check(vector<int> a, int n, int k, int sum) // k: so mang con, sum: tong nho nhat
+{
+	int tong = 0;
+	int so_mang_con = 0; // dem so luong mang con
+	for (int i = 0; i < n; i++) {
+		tong += a[i];
+		if (tong >= sum) {
+			tong = a[i];
+			so_mang_con++;
+		}
+	}
+	so_mang_con++; // cộng thêm 1 lần vì mảng con cuối cùng chưa được cộng
+	return so_mang_con <=k; // việc chia thành k-1, k-2 mảng con thì vẫn đúng 
+}
+int main() {
+
+	int n, k; cin >> n >> k;
+	vector<int> a;
+	for (int i = 0; i < n; i++) {
+		int tmp; cin >> tmp;
+		a.push_back(tmp);
+	}
+	ll right = 0;
+	for (int x : a) right += (ll)x;
+	ll left = *max_element(a.begin(), a.end());
+	int ans = -1;
+	while (left <= right) {
+		int mid = (left + right) / 2;
+		if (check(a, n, k, mid)) {
+			ans = mid;
+			right = mid - 1;
+		}
+		else {
+			left = mid + 1;
+		}
+	}
+	cout << ans;
+}
+
