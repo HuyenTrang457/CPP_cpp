@@ -55,14 +55,14 @@ int main() {
 		cin >> tmp1 >> tmp2;
 		p.push_back(make_pair(tmp1, tmp2));
 	}
-	sort(p.begin(), p.end(), compare);
+	sort(p.begin(), p.end(), compare);  // sắp xếp theo p.first
 	for (int i = 0; i < n; i++) {
 		cout << p[i].first << " " << p[i].second << endl;
 	}
 	int time_current = 0;
 	for (int i = 0; i < n; i++) {
 		if (time_current > p[i].first) {
-			time_current = p[i].first + p[i].second + time_current - p[i].first;
+			time_current = p[i].first + p[i].second + time_current - p[i].first;  // công thức thuật toán tìm ra
 		}
 		else {
 			time_current = p[i].first + p[i].second;
