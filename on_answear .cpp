@@ -1,3 +1,49 @@
+Chú ý bài đầu
+
+
+[Sắp xếp - Tìm Kiếm]. Bài 49. Trò chơi cắt dây
+Có n sợi dây, bạn cần cắt k đoạn dây có cùng chiều dài từ chúng. Tìm chiều dài tối đa của các mảnh dây bạn có thể nhận được.
+
+#include <iostream>
+#include<vector>
+using namespace std;
+//4 11
+//802 743 457 539
+using ll = long long;
+bool check(vector<int> a, int n, int k, double len) {
+	ll dem = 0;
+	for (int i = 0; i < n; i++) {
+		dem += (int)a[i] / len;
+	}
+	return dem >= k;
+}
+int main() {
+	// n: số sợi dây ,, k: số đoạn dây có cùng chiều dài
+	int n, k; cin >> n >> k;
+	vector<int> a;
+	for (int i = 0; i < n; i++) {
+		int tmp; cin >> tmp;
+		a.push_back(tmp);
+	}
+
+	double left = 0, right = 9e18;
+	double ans = -1;
+	for (int i = 0; i < 80; i++) {
+		double mid = (left + right) / 2;
+		if (check(a, n, k, mid)) {
+			ans = mid;
+			left = mid;
+		}
+		else right = mid;
+	}
+
+	cout  << ans; //fixed << setprecision(6)
+
+}
+
+
+-------------------------------------------------------------------------------------
+
 [Sắp xếp - Tìm Kiếm]. Bài 47. Factory machine
 
 #include<iostream>
