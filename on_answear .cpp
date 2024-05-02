@@ -135,3 +135,31 @@ int main() {
 	cout << ans;
 }
 
+
+--------------------------------------------------------------------------------------------
+#include<iostream>
+#include<vector>
+using namespace std;
+using ll = long long;
+bool check(int a, int b, int n, int l) {
+	int s = l % a + l % b;
+	return s <= n;
+}
+int main() {
+	int a, b, n; // chieu dai, rong, so thanh domino
+	cin >> a >> b >> n;
+	ll left = 1;
+	ll right = b * n;
+	int ans = -1;
+	while (left <= right) {
+		int mid = (left + right) / 2; // cạnh hình vuông
+		if (check( a, b, n,mid)) {
+			ans = mid;
+			right = mid - 1;
+		}
+		else {
+			left = mid + 1;
+		}
+	}
+	cout << ans;
+}
