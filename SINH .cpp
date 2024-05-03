@@ -4,7 +4,7 @@
 using namespace std;
 int n, a[100], final=0;
 void ktao() {
-	for (int i = 1; i <=n; i++) {   // i bắt đầu từ 1 để tránh chạy về 0(giá trị để kết thúc sinh
+	for (int i = 1; i <=n; i++) {   // i bắt đầu từ 1 để tránh chạy về 0(giá trị để kết thúc cấu hình
 		a[i] = 0;
 	}
 }
@@ -14,7 +14,7 @@ void sinh() {
 		a[i] = 0; 
 		i--;
 	}
-	if (i == 0) {  // mảng sinh cuối cùng
+	if (i == 0) {  // mảng sinh cuối cùng, kết thúc cấu hình
 		final = 1;
 	}
 	else {  // else if (a[i]==0)
