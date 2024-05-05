@@ -1,3 +1,10 @@
+--> thư viện: <algorithm>
+next_permutation(a,a+n)  ---> trả về cấu hình kế tiếp của mảng a
+cout<<  next_permutation(a,a+n)  ----> trả về TRue( nếu vẫn CÓ THỂ sinh ra cấu hình kế tiếp)
+				----> False(nếu đó là cấu hình cuối cùng)
+
+prev_permutation(a,a+n)  ---> trả về cấu hình liền trước, tương tự ở trên
+
 ## Sinh nhị phân
 
 #include<iostream>
