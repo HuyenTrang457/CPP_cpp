@@ -5,6 +5,18 @@ cout<<  next_permutation(a,a+n)  ----> trả về TRue( nếu vẫn CÓ THỂ si
 
 prev_permutation(a,a+n)  ---> trả về cấu hình liền trước, tương tự ở trên
 
+int main() {
+	cin >> n;
+	ktao();
+	do {
+		for (int i = 0; i <= n; i++) {
+			cout << a[i];
+		}
+		cout << endl;
+	} while (next_permutation(a + 1, a + n + 1));
+}
+
+
 ## Sinh nhị phân
 
 #include<iostream>
