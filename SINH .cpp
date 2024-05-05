@@ -77,3 +77,61 @@ int main() {
 		}
 }
 
+--------------------
+	#include<iostream>
+#include<vector>
+using namespace std;
+using ll = long long;
+int n, k, final = 0;
+int a[100];
+
+void ktao() {
+	for (int i = 1; i <= k; i++) {
+		a[i] = i;
+	}
+
+}
+
+void sinh() {
+	int i = k;
+	while (i != 0 && a[i] == n - k + i) {
+		i--;
+	}
+	if (i == 0) {
+		final = 1;
+	}
+	else // a[i] != n-k+i (a[i] chua dat max
+	{
+	   a[i]++;
+		for (int j = i+1; j <= k; j++) {
+			a[j] = a[j - 1] + 1;
+		}
+	}
+}
+vector<vector<int>> res;
+int main() {
+		cin >> n >> k;
+      vector<int> b;
+		for(int i=0;i<k;i++){
+		   int tmp; cin>>tmp;
+		   b.push_back(tmp);
+		}
+		ktao();
+		while (!final) {
+		   vector<int> tmp;
+			for (int i = 1; i <= k; i++) {
+				tmp.push_back(a[i]);
+			}
+			res.push_back(tmp);
+			sinh();
+		}
+	for(int i=res.size()-1;i>=0;i--){
+	      if(res[i]==b){
+	         cout<< endl<<res.size()-i;
+	         for(int x:res[i]) cout<<x<<" ";
+	      }  
+	}
+}
+
+// 12 4
+// 8 9 10 11 
