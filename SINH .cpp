@@ -135,3 +135,53 @@ int main() {
 
 // 12 4
 // 8 9 10 11 
+
+
+-----------------SINH HOÁN VỊ -------------------------------------------
+	#include<iostream>
+#include<vector>
+#include<algorithm>
+using ll = long long;
+using namespace std;
+// k: biến đếm hoán vị, 
+int n,k=1, a[100], final = 0;
+void swap(int &x,int &y) {
+	int tmp = x;
+	x = y; 
+	y = tmp;
+}
+void ktao() {
+	for (int i = 1; i <= n; i++) {
+		a[i] = i;
+	}
+}
+
+void sinh() {
+	int i = n-1;
+	while (i>=1&&(a[i] > a[i+1])) --i;
+
+	if (i == 0) {
+		final = 1;
+	}
+	else {
+		int j = n;
+		while (a[i] > a[j]) --j;
+		swap(a[i], a[j]);
+		reverse(a + i + 1, a + n + 1);
+	}
+}
+
+int main() {
+	cin >> n;
+	ktao();
+	while (!final) {
+		cout << k << "    ";
+
+		for (int i = 1; i <= n; i++) {
+			cout <<a[i];
+		}
+		k++;
+		cout << endl;
+		sinh();
+	}
+}
