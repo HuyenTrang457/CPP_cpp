@@ -1,6 +1,7 @@
- #include<vector>
- #include<iostream>
- using namespace std;
+    cout << fixed; // Để hiển thị số thập phân với độ chính xác cố định
+    cout.precision(2); // Đặt độ chính xác là 2 số sau dấu phẩy
+    for(double x:distincts){
+        cout<<x<<" ";
 //---------Nhap xuat vector-----------
  int main(){
      vector<int> v;
@@ -57,7 +58,7 @@ reverse(vec.begin()+l, vec.begin()+l );
 //------------MIN--MAX---SUM--------------------------
 cout << *min_element(vec.begin(), vec.end());
     cout << *max_element(vec.begin(), vec.end());
-    cout << accumulate(vec.begin(), vec.end(), 0);
+    cout << accumulate(vec.begin(), vec.end(), 0);  // tổng tất cả phần tử trong vector
 
 //------------ PAIR IN VECTOR------------------------------
  vector<pair<int,int>> point;
@@ -73,7 +74,4 @@ cout << *min_element(vec.begin(), vec.end());
         double dis=distinct_point_to_0(point[i]);
         distincts.push_back(dis);
     }
-    cout << fixed; // Để hiển thị số thập phân với độ chính xác cố định
-    cout.precision(2); // Đặt độ chính xác là 2 số sau dấu phẩy
-    for(double x:distincts){
-        cout<<x<<" ";
+
