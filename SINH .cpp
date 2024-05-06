@@ -1,4 +1,5 @@
-## Kiểm tra lại bài đầu ( Sinh phân hoạch)
+## Kiểm tra lại bài đầu ( Sinh phân hoạch)   
+update: từ chối hiểu , mai mốt xem lại
 
 
 
