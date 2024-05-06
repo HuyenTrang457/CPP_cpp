@@ -32,9 +32,9 @@ int main() {
 using ll = long long;
 using namespace std;
 int n, a[100], final = 0;
-int cnt;
+int cnt;  // lưu số lượng số hạng trong tổng 
 void ktao() {
-	cnt = 1;
+	cnt = 1;  // giá trị đầu là n nên cnt=1
 	a[1] = n;
 }
 
@@ -47,7 +47,7 @@ void sinh() {
 	if (i == 0) final = 1;
 	else {
 		a[i]--;
-		int d = cnt - i + 1;
+		int d = cnt - i + 1; //d: lượng đơn vị còn thiếu sau khi a[i]--
 		// cnt-i: số lượng số 1 đã bỏ qua -->  cnt-i+1 : cộng 1 để cộng lại cái giá trị mà a[i] đã trừ ở ngay phía trên
 		
 		// ---> biểu diễn d theo a[i]
@@ -71,6 +71,7 @@ int main() {
 	ktao();
 	while (!final) {
 		for (int i = 1; i <= n; i++) {
+			if(a[i]!=0)
 			cout << a[i];
 		}
 		cout << endl;
