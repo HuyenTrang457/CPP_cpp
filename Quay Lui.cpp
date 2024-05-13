@@ -1,4 +1,4 @@
---------- NHỊ PHÂN---------------------
+--------- SINH SÂU NHỊ PHÂN---------------------
 
 #include<iostream>
 using namespace std;
