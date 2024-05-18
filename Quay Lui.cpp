@@ -1,3 +1,5 @@
+CHƯA HOÀN THÀNH BÀI 8 QUÂN HẬU
+
 --------- SINH SÂU NHỊ PHÂN---------------------
 
 #include<iostream>
