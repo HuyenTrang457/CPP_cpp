@@ -29,7 +29,7 @@ int main() {
 }
 
 ----------------------------------------
-// Sinh to hop chap k cua n
+// SINH TỔ HỢP CHẬP K CỦA N PHẦN TỬ
 #include<iostream>
 using namespace std;
 int a[100], n,k; // to hop k cua n phan tu
@@ -50,4 +50,37 @@ void sinh(int i) {
 int main() {
 	n = 6; k = 4;
 	sinh(1);
+}
+
+
+----------------------------------------
+
+	// SINH HOÁN VỊ N PHẦN TỬ
+#include<iostream>
+using namespace std;
+int a[100], n=4,k; // to hop k cua n phan tu
+int mark[100] = { 0 };
+void inkq() {
+	for (int i = 1; i <= n; i++) {
+		 cout << a[i];
+	}
+	cout << endl;
+}
+void sinh(int i) {
+	for (int j = 1; j <= n; j++) {
+		if (!mark[j]) {
+			a[i] = j;
+			mark[j] = 1;
+
+			if (i == n) {
+				inkq();
+			}
+			else sinh(i + 1);
+			mark[j] = 0;
+		}
+		
+	}
+}
+int main() {
+   sinh(1);
 }
