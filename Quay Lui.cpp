@@ -86,3 +86,33 @@ void sinh(int i) {
 int main() {
    sinh(1);
 }
+
+
+---------------------------------------
+	Bài 1. Tập hợp có tổng bằng S
+#include<iostream>
+using namespace std;
+int n, x[100]={0}, sum = 0,k,s;
+int cnt=0,a[100];
+void Try(int i,int start) {
+   for(int j=start;j<=n;j++){
+      if(!x[j]){
+         sum+=j;
+         x[j]=1;
+         a[i]=j;
+         if(i==k&&sum==s){
+            cnt++;
+         }
+         else if(i<k&&sum<s) Try(i+1,j+1);
+      x[j]=0;
+      sum-=j;
+      }
+   }
+}
+int main()
+{
+	n=16;k=8;s=91;
+
+	Try(1,1);
+	cout <<cnt;
+}
