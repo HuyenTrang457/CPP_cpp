@@ -1,4 +1,4 @@
-CHƯA HOÀN THÀNH BÀI 8 QUÂN HẬU
+
 
 --------- SINH SÂU NHỊ PHÂN---------------------
 
@@ -115,4 +115,62 @@ int main()
 
 	Try(1,1);
 	cout <<cnt;
+}
+
+---------------------------------------------------
+	[Quay lui-Nhánh cận]. Bài 2. Rat in Maze 1
+
+
+DDDRRR
+DRRDDR
+DRRDRD
+DRRRDD
+RDRDDR
+RDRDRD
+RDRRDD
+
+#include<iostream>
+#include <fstream>
+#include<vector>
+using namespace std;
+int n, a[100][100], sum = 0, cnt = 0;
+string s = "";
+vector<string> paths;
+void de_quy(int i, int j) {
+    if (i == n && j == n) {
+        cout<<s<<endl;
+    }
+
+    if (i + 1 <= n && a[i + 1][j])
+    {
+        s += "D";
+        de_quy(i + 1, j);
+        s.pop_back(); //loại kí tự cuối khi quay về vòng lặp tiếp theo
+    }
+    if (j + 1 <= n && a[i][j + 1]) {
+        s += "R";
+        de_quy(i, j + 1);
+        s.pop_back();
+    }
+   
+
+}
+int main()
+{
+    n = 4;
+    ifstream fin("input.txt");
+    for (int i = 1; i <= n; i++) {
+        for (int j = 1; j <= n; j++) {
+            fin >> a[i][j];
+        }
+    }
+    fin.close();
+    for (int i = 1; i <= n; i++) {
+        for (int j = 1; j <= n; j++) {
+            cout << a[i][j] << " ";
+        }
+        cout << endl;
+    }
+
+    de_quy(1, 1);
 }
