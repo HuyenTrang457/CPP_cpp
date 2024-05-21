@@ -168,3 +168,75 @@ int main()
    if(a[1][1]==0||a[n][n]==0) cout<<"error";
     else de_quy(1, 1);
 }
+
+
+------------------------------------ MÊ CUNG 2 ( 4 ĐƯỜNG ĐI)
+	
+// sửa lại trường hợp RL - DU
+#include<iostream>
+#include <fstream>
+#include<vector>
+using namespace std;
+int n, a[100][100], sum = 0, cnt = 0;
+string s = "";
+vector<string> paths;
+void de_quy(int i, int j) {
+    if (i == n && j == n) {
+        cout<<s<<endl;
+           cnt++;
+    }
+   if (j + 1 <= n && a[i][j + 1]&&a[i][j+1]) {
+        s += "R";
+        a[i][j+1]=0;
+        de_quy(i, j + 1);
+        s.pop_back();
+        a[i][j+1]=1;
+    }
+    if (i + 1 <= n && a[i + 1][j]&& a[i+1][j])
+    {
+        s += "D";
+        a[i+1][j]=0;
+        de_quy(i + 1, j);
+        s.pop_back(); //loại kí tự cuối khi quay về vòng lặp tiếp theo
+        a[i+1][j]=1;
+    }
+    
+   if((j-1)>0&&a[i][j-1]&& a[i][j-1])
+   {
+      s+="L";
+      a[i][j-1]=0;
+      de_quy(i,j-1);
+      s.pop_back();
+      a[i][j-1]=1;
+   }
+   if((i-1)>0&&a[i-1][j]&& a[i-1][j])
+   {
+      s+="U";
+      a[i-1][j]=0;
+      de_quy(i-1,j);
+      s.pop_back();
+      a[i-1][j]=1;
+   }
+   
+}
+int main()
+{
+    n = 4;
+    ifstream fin("input.txt");
+    for (int i = 1; i <= n; i++) {
+        for (int j = 1; j <= n; j++) {
+            fin >> a[i][j];
+        }
+    }
+    fin.close();
+    for (int i = 1; i <= n; i++) {
+        for (int j = 1; j <= n; j++) {
+            cout << a[i][j] << " ";
+        }
+        cout << endl;
+    }
+   if(a[1][1]==0||a[n][n]==0) cout<<"error";
+    else de_quy(1, 1);
+    
+    cout<<"cnt= "<<cnt;
+}
