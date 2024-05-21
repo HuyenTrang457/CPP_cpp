@@ -121,13 +121,7 @@ int main()
 	[Quay lui-Nhánh cận]. Bài 2. Rat in Maze 1
 
 
-DDDRRR
-DRRDDR
-DRRDRD
-DRRRDD
-RDRDDR
-RDRDRD
-RDRRDD
+
 
 #include<iostream>
 #include <fstream>
@@ -171,6 +165,6 @@ int main()
         }
         cout << endl;
     }
-
-    de_quy(1, 1);
+   if(a[1][1]==0||a[n][n]==0) cout<<"error";
+    else de_quy(1, 1);
 }
