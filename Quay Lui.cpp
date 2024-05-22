@@ -181,43 +181,45 @@ int n, a[100][100], sum = 0, cnt = 0;
 string s = "";
 vector<string> paths;
 void de_quy(int i, int j) {
+   a[i][j]=0;
     if (i == n && j == n) {
         cout<<s<<endl;
            cnt++;
     }
-   if (j + 1 <= n && a[i][j + 1]&&a[i][j+1]) {
-        s += "R";
-        a[i][j+1]=0;
-        de_quy(i, j + 1);
-        s.pop_back();
-        a[i][j+1]=1;
-    }
     if (i + 1 <= n && a[i + 1][j]&& a[i+1][j])
     {
         s += "D";
-        a[i+1][j]=0;
+        //a[i+1][j]=0;
         de_quy(i + 1, j);
         s.pop_back(); //loại kí tự cuối khi quay về vòng lặp tiếp theo
-        a[i+1][j]=1;
+        //a[i+1][j]=1;
     }
+   if (j + 1 <= n && a[i][j + 1]&&a[i][j+1]) {
+        s += "R";
+        //a[i][j+1]=0;
+        de_quy(i, j + 1);
+        s.pop_back();
+       // a[i][j+1]=1;
+    }
+    
     
    if((j-1)>0&&a[i][j-1]&& a[i][j-1])
    {
       s+="L";
-      a[i][j-1]=0;
+      //a[i][j-1]=0;
       de_quy(i,j-1);
       s.pop_back();
-      a[i][j-1]=1;
+      //a[i][j-1]=1;
    }
    if((i-1)>0&&a[i-1][j]&& a[i-1][j])
    {
       s+="U";
-      a[i-1][j]=0;
+      //a[i-1][j]=0;
       de_quy(i-1,j);
       s.pop_back();
-      a[i-1][j]=1;
+      //a[i-1][j]=1;
    }
-   
+   a[i][j]=1;
 }
 int main()
 {
