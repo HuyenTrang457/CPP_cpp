@@ -16,6 +16,15 @@ void DFS1(int u){
 }
 
 void DFS2(int u)
+{
+   cout<<u<<" ";
+   visited[u]= true;
+   for(int i=1;i<=n;i++){
+      if(a[u][i]==1){
+         if(!visited[i]) DFS2(i);
+      }
+   }
+}
 int main()
 {
     cin>>n>>m;
