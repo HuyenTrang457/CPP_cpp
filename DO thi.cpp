@@ -5,7 +5,7 @@ vector<int> ke[101];
 int a[101][101];
 bool visited[101]={false};
 int n,m;
-
+vector<pair<int,int>> dscanh;
 void DFS1(int u){
    cout<<u<<" ";
    visited[u]= true;
@@ -24,6 +24,20 @@ void DFS2(int u)
          if(!visited[i]) DFS2(i);
       }
    }
+}
+void DFS3(int u)
+{
+   cout<<u<<" ";
+   visited[u]= true;
+   for(auto it:dscanh){
+      if(it.first==u){
+         if(!visited[it.second]) DFS3(it.second);
+      }
+      if(it.second==u){
+         if(!visited[it.first]) DFS3(it.first);
+      }
+   }
+   
 }
 int main()
 {
