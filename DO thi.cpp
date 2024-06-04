@@ -39,6 +39,21 @@ void DFS3(int u)
    }
    
 }
+void BFS(int u){
+   queue<int> q;
+   q.push(u);
+   visited[u]=true;
+   while(!q.empty){
+      int x=q.front(); q.pop();
+      cout<<x<<" ";
+      for(int y:ke[x]){
+         if(!visited[y]){
+            q.push(y);
+            visited[y]= true;
+         }
+      }
+   }
+}
 int main()
 {
     cin>>n>>m;
