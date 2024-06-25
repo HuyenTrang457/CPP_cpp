@@ -2,7 +2,7 @@
 update: từ chối hiểu , mai mốt xem lại
 
 
-
+## dùng vector để khởi tạo: thêm vec.resize(n+1)
 --> thư viện: <algorithm>
 next_permutation(a,a+n)  ---> trả về cấu hình kế tiếp của mảng a
 cout<<  next_permutation(a,a+n)  ----> trả về TRue( nếu vẫn CÓ THỂ sinh ra cấu hình kế tiếp)
