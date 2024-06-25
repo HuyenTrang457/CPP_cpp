@@ -249,7 +249,7 @@ void sinh() {
 		int j = n;
 		while (a[i] > a[j]) --j;
 		swap(a[i], a[j]);
-		reverse(a + i + 1, a + n + 1);
+		reverse(a + i + 1, a + n + 1); // hàm reverse(start, end) đảo từ start đến (end-1)
 	}
 }
 
