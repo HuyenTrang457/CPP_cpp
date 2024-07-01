@@ -1,3 +1,54 @@
+---------- NGƯỜI DU LỊCH ( chi phí thấp nhất)---------------------------
+
+//n=8 --> output: 92
+#include<bits/stdc++.h>
+using namespace std;
+
+int a[100][100],x[100],mark[100];
+int n,res=10000;
+void Try(int i, int sum){
+   
+   for(int j=1;j<=n;j++){
+      if(!mark[j]){
+         x[i]=j;
+	      sum+= a[x[i-1]][x[i]];
+	      mark[j]=1;
+	      if(i==n)
+	      {
+	         sum+= a[x[n]][1];
+	         res= min(sum,res);
+	      }
+	      else{
+	         Try(i+1,sum);
+	      }
+         sum-= a[x[i-1]][x[i]];
+         mark[j]=0;
+	
+      }
+   }
+	
+}
+int main()
+{
+   n=4;
+   fstream fin("input.txt");
+   for(int i=1;i<=n;i++){
+        for(int j=1;j<=n;j++){
+            fin>> a[i][j];
+        }
+    }
+    for(int i=1;i<=n;i++){
+        for(int j=1;j<=n;j++){
+            cout<< a[i][j]<<" ";
+        }
+        cout<<endl;
+    }
+    x[0]=1;
+	Try(1,0);
+	cout<<endl<<res;
+	
+}
+
 
 
 --------- SINH SÂU NHỊ PHÂN---------------------
