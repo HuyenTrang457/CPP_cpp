@@ -172,73 +172,80 @@ int main()
 
 ------------------------------------ MÊ CUNG 2 ( 4 ĐƯỜNG ĐI)
 	
-// sửa lại trường hợp RL - DU
-#include<iostream>
+#include <cstring>
+#include <iostream>
 #include <fstream>
-#include<vector>
 using namespace std;
-int n, a[100][100], sum = 0, cnt = 0;
-string s = "";
-vector<string> paths;
-void de_quy(int i, int j) {
-   a[i][j]=0;
+
+int a[100][100];
+int n, cnt = 0;
+string res = "";
+bool mark[100][100];
+
+void quayLui(int i, int j) {
     if (i == n && j == n) {
-        cout<<s<<endl;
-           cnt++;
+        cnt++;
+        cout << cnt << ": " << res << endl;
+        return;
     }
-    if (i + 1 <= n && a[i + 1][j]&& a[i+1][j])
-    {
-        s += "D";
-        //a[i+1][j]=0;
-        de_quy(i + 1, j);
-        s.pop_back(); //loại kí tự cuối khi quay về vòng lặp tiếp theo
-        //a[i+1][j]=1;
+
+    // Xuống dưới
+    if (i + 1 <= n && a[i + 1][j] == 1 && !mark[i + 1][j]) {
+        res += 'D';
+        mark[i + 1][j] = true;
+        quayLui(i + 1, j);
+        res.pop_back();
+        mark[i + 1][j] = false;
     }
-   if (j + 1 <= n && a[i][j + 1]&&a[i][j+1]) {
-        s += "R";
-        //a[i][j+1]=0;
-        de_quy(i, j + 1);
-        s.pop_back();
-       // a[i][j+1]=1;
+
+    // Lên trên
+    if (i - 1 >= 1 && a[i - 1][j] == 1 && !mark[i - 1][j]) {
+        res += 'U';
+        mark[i - 1][j] = true;
+        quayLui(i - 1, j);
+        res.pop_back();
+        mark[i - 1][j] = false;
     }
-    
-    
-   if((j-1)>0&&a[i][j-1]&& a[i][j-1])
-   {
-      s+="L";
-      //a[i][j-1]=0;
-      de_quy(i,j-1);
-      s.pop_back();
-      //a[i][j-1]=1;
-   }
-   if((i-1)>0&&a[i-1][j]&& a[i-1][j])
-   {
-      s+="U";
-      //a[i-1][j]=0;
-      de_quy(i-1,j);
-      s.pop_back();
-      //a[i-1][j]=1;
-   }
-   a[i][j]=1;
+
+    // Sang phải
+    if (j + 1 <= n && a[i][j + 1] == 1 && !mark[i][j + 1]) {
+        res += 'R';
+        mark[i][j + 1] = true;
+        quayLui(i, j + 1);
+        res.pop_back();
+        mark[i][j + 1] = false;
+    }
+
+    // Sang trái
+    if (j - 1 >= 1 && a[i][j - 1] == 1 && !mark[i][j - 1]) {
+        res += 'L';
+        mark[i][j - 1] = true;
+        quayLui(i, j - 1);
+        res.pop_back();
+        mark[i][j - 1] = false;
+    }
 }
-int main()
-{
-    n = 4;
+
+int main() {
+    n = 4; // Kích thước ma trận
     ifstream fin("input.txt");
+    if (!fin) {
+        cout << "Cannot open input file." << endl;
+        return 1;
+    }
     for (int i = 1; i <= n; i++) {
         for (int j = 1; j <= n; j++) {
             fin >> a[i][j];
         }
     }
     fin.close();
-    for (int i = 1; i <= n; i++) {
-        for (int j = 1; j <= n; j++) {
-            cout << a[i][j] << " ";
-        }
-        cout << endl;
+
+    if (a[1][1] == 1 && a[n][n] == 1) {
+        mark[1][1] = true;
+        quayLui(1, 1);
+    } else {
+        cout << "No valid paths available." << endl;
     }
-   if(a[1][1]==0||a[n][n]==0) cout<<"error";
-    else de_quy(1, 1);
-    
-    cout<<"cnt= "<<cnt;
+
+    return 0;
 }
